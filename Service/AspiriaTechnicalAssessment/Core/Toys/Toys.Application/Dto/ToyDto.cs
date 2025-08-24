@@ -1,5 +1,4 @@
-﻿
-namespace AspiriaTechnicalAssessment.Toys.Toys.Application.Dto
+﻿namespace AspiriaTechnicalAssessment.Core.Toys.Toys.Application.Dto
 {
     public class ToyDto
     {

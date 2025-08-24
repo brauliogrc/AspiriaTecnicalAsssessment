@@ -1,4 +1,4 @@
-﻿namespace AspiriaTechnicalAssessment.Toys.Toys.Domain
+﻿namespace AspiriaTechnicalAssessment.Core.Toys.Toys.Domain
 {
     public interface IToyRepository
     {
@@ -6,6 +6,6 @@
         Toy GetById(int Id);
         bool Insert(Toy toy);
         bool Update(Toy toy);
-        bool Delete(int Id);
+        bool Delete(Toy toy);
     }
 }

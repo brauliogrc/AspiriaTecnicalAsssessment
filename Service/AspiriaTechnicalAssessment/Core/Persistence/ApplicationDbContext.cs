@@ -1,7 +1,7 @@
-﻿using AspiriaTechnicalAssessment.Toys.Toys.Domain;
+﻿using AspiriaTechnicalAssessment.Core.Toys.Toys.Domain;
 using Microsoft.EntityFrameworkCore;
 
-namespace AspiriaTechnicalAssessment.Persistence
+namespace AspiriaTechnicalAssessment.Core.Persistence
 {
     public class ApplicationDbContext : DbContext
     {

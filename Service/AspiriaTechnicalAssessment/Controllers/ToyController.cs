@@ -1,6 +1,5 @@
-﻿using AspiriaTechnicalAssessment.Toys.Toys.Application;
-using AspiriaTechnicalAssessment.Toys.Toys.Application.Dto;
-using Microsoft.AspNetCore.Http;
+﻿using AspiriaTechnicalAssessment.Core.Toys.Toys.Application;
+using AspiriaTechnicalAssessment.Core.Toys.Toys.Application.Dto;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AspiriaTechnicalAssessment.Controllers
@@ -21,7 +20,6 @@ namespace AspiriaTechnicalAssessment.Controllers
         {
             return Ok(_toyApplication.GetAll());
         }
-
 
         [HttpGet("{id}"), ActionName("GetById")]
         public IActionResult GetById(int id)

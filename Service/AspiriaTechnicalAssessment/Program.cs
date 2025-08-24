@@ -1,16 +1,22 @@
-using AspiriaTechnicalAssessment.Persistence;
+using AspiriaTechnicalAssessment.Core.Persistence;
+using AspiriaTechnicalAssessment.Modules.Injection;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseInMemoryDatabase("ToysDatabase"));
+// Add DbContext using In-Memory Database.
+var connectionString = builder.Configuration.GetConnectionString("DefaultInMemoryDatabase")
+    ?? throw new InvalidOperationException("Connection string \"DefaultInMemoryDatabase\" not found");
+builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseInMemoryDatabase(connectionString));
 
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
+// Dependency Injection
+builder.Services.AddInjections(builder.Configuration);
 
 
 var app = builder.Build();
