@@ -1,5 +1,4 @@
 ﻿using AspiriaTechnicalAssessment.Core.Persistence;
-using AspiriaTechnicalAssessment.Core.Toys.Toys.Application.Dto;
 using AspiriaTechnicalAssessment.Core.Toys.Toys.Domain;
 
 namespace AspiriaTechnicalAssessment.Core.Toys.Toys.Interface

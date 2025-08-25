@@ -1,5 +1,6 @@
 using AspiriaTechnicalAssessment.Core.Persistence;
 using AspiriaTechnicalAssessment.Modules.Cors;
+using AspiriaTechnicalAssessment.Modules.DataInitializer;
 using AspiriaTechnicalAssessment.Modules.Injection;
 using Microsoft.EntityFrameworkCore;
 
@@ -44,5 +45,11 @@ app.UseCors("AspiriaApiPlicy");
 
 app.UseSwagger();
 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Toys API"));
+
+// Preload initial data
+using (var scope = app.Services.CreateScope())
+{
+    DataInitializer.LoadData(scope.ServiceProvider.GetRequiredService<ApplicationDbContext>());
+}
 
 app.Run();

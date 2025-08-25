@@ -1,4 +1,5 @@
 ﻿using AspiriaTechnicalAssessment.Core.Toys.Toys.Application.Dto;
+using AspiriaTechnicalAssessment.Core.Toys.Toys.Application.Validators;
 using AspiriaTechnicalAssessment.Core.Toys.Toys.Domain;
 using AspiriaTechnicalAssessment.Core.Transversal.Common;
 using Mapster;
@@ -31,6 +32,7 @@ namespace AspiriaTechnicalAssessment.Core.Toys.Toys.Application
             }
             catch (Exception ex)
             {
+                response.IsSuccess = false;
                 response.Message = ex.Message;
             }
             return response;
@@ -54,6 +56,7 @@ namespace AspiriaTechnicalAssessment.Core.Toys.Toys.Application
             }
             catch(Exception ex)
             {
+                response.IsSuccess = false;
                 response.Message = ex.Message;
             }
             return response;
@@ -66,10 +69,11 @@ namespace AspiriaTechnicalAssessment.Core.Toys.Toys.Application
         /// <returns></returns>
         public Response<bool> Insert(ToyDto dto)
         {
-            var response = new Response<bool>();
+            Toy toy = dto.Adapt<Toy>();
+            var response = ValidatorHelper.Validate(toy);
+            if (response.Errors.Any()) return response;
             try
             {
-                Toy toy = dto.Adapt<Toy>();
                 response.Data = _toyRepository.Insert(toy);
                 if (response.Data)
                 {
@@ -79,6 +83,7 @@ namespace AspiriaTechnicalAssessment.Core.Toys.Toys.Application
             }
             catch (Exception ex)
             {
+                response.IsSuccess = false;
                 response.Message = ex.Message;
             }
             return response;
@@ -91,10 +96,11 @@ namespace AspiriaTechnicalAssessment.Core.Toys.Toys.Application
         /// <returns></returns>
         public Response<bool> Update(ToyDto dto)
         {
-            var response = new Response<bool>();
+            Toy toy = dto.Adapt<Toy>();
+            var response = ValidatorHelper.Validate(toy);
+            if (response.Errors.Any()) return response;
             try
             {
-                Toy toy = dto.Adapt<Toy>();
                 response.Data = _toyRepository.Update(toy);
                 if (response.Data)
                 {
@@ -104,6 +110,7 @@ namespace AspiriaTechnicalAssessment.Core.Toys.Toys.Application
             }
             catch (Exception ex)
             {
+                response.IsSuccess = false;
                 response.Message = ex.Message;
             }
             return response;
@@ -130,6 +137,7 @@ namespace AspiriaTechnicalAssessment.Core.Toys.Toys.Application
             }
             catch (Exception ex)
             {
+                response.IsSuccess = false;
                 response.Message = ex.Message;
             }
             return response;

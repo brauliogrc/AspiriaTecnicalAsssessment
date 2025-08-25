@@ -2,6 +2,12 @@
 {
     public static class FeatureCorsExtension
     {
+        /// <summary>
+        /// Confiture CORS policy
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="configuration"></param>
+        /// <returns></returns>
         public static IServiceCollection AddFeatureCors(this IServiceCollection services, IConfiguration configuration)
         {
             string myPolicy = "AspiriaApiPlicy";
