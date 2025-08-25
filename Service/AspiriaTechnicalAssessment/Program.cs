@@ -1,4 +1,5 @@
 using AspiriaTechnicalAssessment.Core.Persistence;
+using AspiriaTechnicalAssessment.Modules.Cors;
 using AspiriaTechnicalAssessment.Modules.Injection;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,6 +19,9 @@ builder.Services.AddOpenApi();
 // Dependency Injection
 builder.Services.AddInjections(builder.Configuration);
 
+// Cors
+builder.Services.AddFeatureCors(builder.Configuration);
+
 
 var app = builder.Build();
 
@@ -32,5 +36,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseCors("AspiriaApiPlicy");
 
 app.Run();

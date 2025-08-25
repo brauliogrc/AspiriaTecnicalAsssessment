@@ -20,14 +20,13 @@ namespace AspiriaTechnicalAssessment.Core.Toys.Toys.Application
         /// <returns></returns>
         public Response<List<ToyDto>> GetAll()
         {
-
-            
             var response = new Response<List<ToyDto>>();
             try
             {
                 var toys = _toyRepository.GetAll();
                 if (!toys.Any()) throw new Exception("No toys found");
                 response.Data = toys.Adapt<List<ToyDto>>();
+                response.IsSuccess = true;
                 response.Message = "Toys retrieved successfully";
             }
             catch (Exception ex)
@@ -50,6 +49,7 @@ namespace AspiriaTechnicalAssessment.Core.Toys.Toys.Application
                 var toy = _toyRepository.GetById(id);
                 if (toy == null) throw new Exception("Toy not found");
                 response.Data = toy.Adapt<ToyDto>();
+                response.IsSuccess = true;
                 response.Message = "Toy retrieved successfully";
             }
             catch(Exception ex)
