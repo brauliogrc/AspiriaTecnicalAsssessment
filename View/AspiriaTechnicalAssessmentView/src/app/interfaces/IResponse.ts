@@ -2,5 +2,10 @@ export interface IResponse<T> {
     data: T;
     isSuccess: boolean;
     message: string;
-    errors: Array<any>; // IEnumerable<ValidationFailure>
+    errors: Array<IValidationErrors>;
+}
+
+interface IValidationErrors {
+    propertyName: string;
+    errorMessage: string;
 }

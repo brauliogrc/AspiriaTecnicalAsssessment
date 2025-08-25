@@ -24,7 +24,7 @@ namespace AspiriaTechnicalAssessment.Core.Toys.Toys.Application.Validators
                 {
                     Data = true,
                     IsSuccess = true,
-                    Message = "Validación exitosa"
+                    Message = "Validation successful"
                 };
             }
             else
@@ -33,7 +33,7 @@ namespace AspiriaTechnicalAssessment.Core.Toys.Toys.Application.Validators
                 {
                     Data = false,
                     IsSuccess = false,
-                    Message = "Errores de validación",
+                    Message = "Validation errors",
                     Errors = results.Select(r => new ValidationFailure(
                         string.Join(", ", r.MemberNames),
                         r.ErrorMessage))

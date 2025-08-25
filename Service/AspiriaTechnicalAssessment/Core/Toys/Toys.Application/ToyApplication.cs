@@ -71,7 +71,7 @@ namespace AspiriaTechnicalAssessment.Core.Toys.Toys.Application
         {
             Toy toy = dto.Adapt<Toy>();
             var response = ValidatorHelper.Validate(toy);
-            if (response.Errors.Any()) return response;
+            if (response.Errors != null && response.Errors.Any()) return response;
             try
             {
                 response.Data = _toyRepository.Insert(toy);
@@ -98,7 +98,7 @@ namespace AspiriaTechnicalAssessment.Core.Toys.Toys.Application
         {
             Toy toy = dto.Adapt<Toy>();
             var response = ValidatorHelper.Validate(toy);
-            if (response.Errors.Any()) return response;
+            if (response.Errors != null && response.Errors.Any()) return response;
             try
             {
                 response.Data = _toyRepository.Update(toy);

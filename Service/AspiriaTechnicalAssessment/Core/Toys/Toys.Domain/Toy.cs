@@ -17,9 +17,11 @@ namespace AspiriaTechnicalAssessment.Core.Toys.Toys.Domain
         [Range(0, 100, ErrorMessage = "Age range must be between 0 and 100")]
         public int AgeRestriction { get; set; }
 
+        [Required]
         [MaxLength(50, ErrorMessage = "Company name couldn't be higher than 50 characters")]
         public string Company { get; set; }
 
+        [Required]
         [Range(1, 1000, ErrorMessage = "A Toy couldn't has a price higher than 1000")]
         public double Price { get; set; }
     }

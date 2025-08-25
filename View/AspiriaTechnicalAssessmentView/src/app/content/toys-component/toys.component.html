@@ -1,4 +1,4 @@
-<div class="p-5">
+<div class="p-5 position-relative">
 	<h1 class="mb-3">Toy store</h1>
 	<button class="btn btn-primary" (click)="addNewToy()">Add New</button>
 	
@@ -18,15 +18,7 @@
 			@for (toy of toys; track toy.id) {
 				<tr>
 					<th scope="row">{{ toy.id }}</th>
-					<td>
-						<!-- <img
-							[src]="'https://upload.wikimedia.org/wikipedia/commons/' + toy.flag"
-							[alt]="'The flag of ' + toy.name"
-							class="me-2"
-							style="width: 20px"
-						/> -->
-						{{ toy.name }}
-					</td>
+					<td>{{ toy.name }}</td>
 					<td>{{ toy.ageRestriction | number }}</td>
 					<td>{{ toy.price | number }}</td>
 					<td>{{ toy.company }}</td>

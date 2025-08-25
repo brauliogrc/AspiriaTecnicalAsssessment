@@ -1,12 +1,10 @@
-import { Component, OnInit, OnDestroy, TemplateRef, WritableSignal, signal, resource, booleanAttribute, inject } from '@angular/core';
-import { ToyService } from '../../services/toy-service/toy.service';
-import { IToy } from '../../interfaces/IToy';
-import { Observable, Subscription } from 'rxjs';
-import { IResponse } from '../../interfaces/IResponse';
-import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { MatDialog } from '@angular/material/dialog';
-import { ToyDetailComponent } from './toy-detail-component/toy-detail.component';
 import { CommonModule } from '@angular/common';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { Subscription } from 'rxjs';
+import { IToy } from '../../interfaces/IToy';
+import { ToyService } from '../../services/toy-service/toy.service';
+import { ToyDetailComponent } from './toy-detail-component/toy-detail.component';
 
 @Component({
   selector: 'ata-toys-component',
@@ -41,8 +39,7 @@ export class ToysComponent implements OnInit, OnDestroy{
 
   addNewToy(): void {
     const dialog = this._matDialog.open(ToyDetailComponent, {
-      width: '20rem',
-      height: '32rem',
+      width: '23rem',
       data: {}
     });
 
@@ -55,8 +52,7 @@ export class ToysComponent implements OnInit, OnDestroy{
 
   updateToy(toy: IToy): void {
     const dialog = this._matDialog.open(ToyDetailComponent, {
-      width: '20rem',
-      height: '32rem',
+      width: '23rem',
       data: toy
     });
 
