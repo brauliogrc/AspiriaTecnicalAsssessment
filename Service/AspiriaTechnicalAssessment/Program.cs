@@ -22,6 +22,9 @@ builder.Services.AddInjections(builder.Configuration);
 // Cors
 builder.Services.AddFeatureCors(builder.Configuration);
 
+// Swagger - OpenAPI
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
@@ -38,5 +41,8 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.UseCors("AspiriaApiPlicy");
+
+app.UseSwagger();
+app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Toys API"));
 
 app.Run();
