@@ -6,6 +6,12 @@ namespace AspiriaTechnicalAssessment.Modules.Injection
 {
     public static class InjectionExtension
     {
+        /// <summary>
+        /// Add dependency injections
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="configuration"></param>
+        /// <returns></returns>
         public static IServiceCollection AddInjections(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddSingleton<IConfiguration>(configuration);

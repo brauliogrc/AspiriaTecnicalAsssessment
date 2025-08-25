@@ -1,5 +1,4 @@
 ﻿using AspiriaTechnicalAssessment.Core.Persistence;
-using AspiriaTechnicalAssessment.Core.Toys.Toys.Application.Dto;
 using AspiriaTechnicalAssessment.Core.Toys.Toys.Domain;
 
 namespace AspiriaTechnicalAssessment.Core.Toys.Toys.Interface
@@ -19,7 +18,7 @@ namespace AspiriaTechnicalAssessment.Core.Toys.Toys.Interface
         /// <returns></returns>
         public List<Toy> GetAll()
         {
-            var res = _context.Toys.ToList();
+            var res = _context.Toys.OrderBy(x => x.Id).ToList();
             if (res == null || !res.Any()) return new List<Toy>();
             return res;
         }

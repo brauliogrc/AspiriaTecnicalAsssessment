@@ -1,0 +1,36 @@
+<div class="p-5 position-relative">
+	<h1 class="mb-3">Toy store</h1>
+	<button class="btn btn-primary" (click)="addNewToy()">Add New</button>
+	
+	<table class="table table-striped mt-3">
+		<thead>
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">Name</th>
+				<th scope="col">Age</th>
+				<th scope="col">Price</th>
+				<th scope="col">Company</th>
+				<th scope="col">Description</th>
+				<th scope="col">Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			@for (toy of toys; track toy.id) {
+				<tr>
+					<th scope="row">{{ toy.id }}</th>
+					<td>{{ toy.name }}</td>
+					<td>{{ toy.ageRestriction | number }}</td>
+					<td>{{ toy.price | number }}</td>
+					<td>{{ toy.company }}</td>
+					<td>{{ toy.description }}</td>
+					<td>
+						<div class="d-flex justify-content-around align-items-center w-50">
+							<button class="btn btn-sm btn-info text-white" (click)="updateToy(toy)">Edit</button>
+							<button class="btn btn-sm btn-danger" (click)="confirmDeletion(toy)">Delete</button>
+						</div>
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+</div>

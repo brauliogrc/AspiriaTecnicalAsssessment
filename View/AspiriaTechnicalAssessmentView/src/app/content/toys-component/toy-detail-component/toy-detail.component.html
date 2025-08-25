@@ -1,0 +1,131 @@
+<div class="p-5">
+    <h2>
+        @if (!!data.id) { <span>Updating Toy </span> }
+        @else { <span>Create new Toy</span>  }
+    </h2>
+    <form [formGroup]="toyFormGroup" (ngSubmit)="handleSubmit()">
+        <div class="input-container mb-2">
+            <label for="name">Name<small>*</small></label>
+            <div class="input-group">
+                <input
+                    id="name"
+                    type="text"
+                    class="form-control"
+                    formControlName="name">
+            </div>
+            @if(toyFormGroup.get('name')?.invalid
+                && (toyFormGroup.get('name')?.dirty || toyFormGroup.get('name')?.touched)
+            ) {
+                <div class="validation-errors text-danger">
+                    @if(toyFormGroup.get('name')?.errors?.['required']) {
+                        <small>Mandatory field</small>
+                    }
+                    @if(toyFormGroup.get('name')?.errors?.['maxlength']) {
+                        <small>Name cannot exceed 50 characters</small>
+                    }
+                </div>
+            }
+        </div>
+
+        <div class="input-container mb-2">
+            <label for="price">Price<small>*</small></label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">$</span>
+                </div>
+                <input
+                    id="price"
+                    type="number"
+                    min="1"
+                    step=".01"
+                    class="form-control"
+                    formControlName="price">
+            </div>
+            @if(toyFormGroup.get('price')?.invalid
+                && (toyFormGroup.get('price')?.dirty || toyFormGroup.get('price')?.touched)
+            ) {
+                <div class="validation-errors text-danger">
+                    @if(toyFormGroup.get('price')?.errors?.['required']) {
+                        <small>Mandatory field</small>
+                    }
+                    @if(toyFormGroup.get('price')?.errors?.['min'] || toyFormGroup.get('price')?.errors?.['max']) {
+                        <small>Price must be between 1 and 1000</small>
+                    }
+                </div>
+            }
+        </div>
+
+        <div class="input-container mb-2">
+            <label for="company">Company<small>*</small></label>
+            <div class="input-group">
+                <input
+                    id="company"
+                    type="text"
+                    class="form-control"
+                    formControlName="company">
+            </div>
+            @if(toyFormGroup.get('company')?.invalid
+                && (toyFormGroup.get('company')?.dirty || toyFormGroup.get('company')?.touched)
+            ) {
+                <div class="validation-errors text-danger">
+                    @if(toyFormGroup.get('company')?.errors?.['required']) {
+                        <small>Mandatory field</small>
+                    }
+                    @if(toyFormGroup.get('company')?.errors?.['maxlength']) {
+                        <small>Company cannot exceed 50 characters</small>
+                    }
+                </div>
+            }
+        </div>
+
+        <div class="input-container mb-2">
+            <label for="ageRestriction">Age restriction</label>
+            <div class="input-group">
+                <input
+                    id="ageRestriction"
+                    type="number"
+                    min="0"
+                    class="form-control"
+                    formControlName="ageRestriction">
+            </div>
+            @if(toyFormGroup.get('ageRestriction')?.invalid
+                && (toyFormGroup.get('ageRestriction')?.dirty || toyFormGroup.get('ageRestriction')?.touched)
+            ) {
+                <div class="validation-errors text-danger">
+                    @if(toyFormGroup.get('ageRestriction')?.errors?.['min'] || toyFormGroup.get('ageRestriction')?.errors?.['max']) {
+                        <small>Age restriction must be between 0 and 100</small>
+                    }
+                </div>
+            }
+        </div>
+
+        <div class="input-container mb-2">
+            <label for="description">Description</label>
+            <div class="input-group">
+                <textarea
+                    id="description"
+                    type="text"
+                    class="form-control"
+                    formControlName="description"
+                ></textarea>
+            </div>
+            @if(toyFormGroup.get('description')?.invalid
+                && (toyFormGroup.get('description')?.dirty || toyFormGroup.get('description')?.touched)
+            ) {
+                <div class="validation-errors text-danger">
+                    @if(toyFormGroup.get('description')?.errors?.['maxlength']) {
+                        <small>Description cannot exceed 100 characters</small>
+                    }
+                </div>
+            }
+        </div>
+
+        <div class="mt-3 d-flex justify-content-between align-items-center w-50">
+            <button
+                class="btn btn-sm btn-success">Save</button>
+            <button
+                type="button"
+                class="btn btn-sm btn-danger" (click)="close()">Cancel</button>
+        </div>
+    </form>
+</div>
