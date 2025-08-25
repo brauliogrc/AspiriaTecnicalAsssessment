@@ -3,13 +3,14 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IToy } from '../../interfaces/IToy';
 import { IResponse } from '../../interfaces/IResponse';
+import { environment } from '../../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ToyService {
   
-  private _urlBase: string = 'https://localhost:44318/api/';
+  private _urlBase: string = environment.apiUrlBase;
 
   constructor(
     private _http: HttpClient
